@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from django import forms
+from .models import *
+from .forms import TaskForm
 
 
 def admin(request):
@@ -11,7 +13,21 @@ def index(request):
 
 
 def input_task(request):
-    return render(request, 'main/input_task.html')
+    error = ''
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Поля заполнены не верно'
+
+    form = TaskForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'main/input_task.html', context)
 
 
 def report_task(request):

@@ -10,8 +10,13 @@ CRM "ГК-НК"
 
 
 {% block content1 %}
-    Здесь будет блоки для РЕГИСТРАЦИИ заявок
-    <p>Всякая фигня на странице регистрации заявок</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        <button type="submit" class="btn btn-secondary btn-sm">отправить</button>
+        <span>{{ error }}</span>
+
 {% endblock %}
 
 {% block content2 %}
