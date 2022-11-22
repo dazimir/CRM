@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from .models import Task
 
 
 def admin(request):
@@ -19,4 +19,5 @@ def report_task(request):
 
 
 def status_task(request):
-    return render(request, 'main/status_task.html')
+    tasks = Task.objects.all()
+    return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks })

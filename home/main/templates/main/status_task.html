@@ -10,7 +10,13 @@ CRM "ГК-НК"
 
 
 {% block content1 %}
-    СТАТУСЫ заявок
-    <p>Всякая фигня </p>
+{{ title }}
+
+{% for el in tasks %}
+<h3>{{ el.title }}</h3>
+<p> {{ el.task }}</p>
+<hr>
+{% endfor %}
+
 {% endblock %}
 

@@ -10,8 +10,13 @@ CRM "ГК-НК"
 
 
 {% block content1 %}
-    Здесь будет блоки для ОТЧЕТА по заявкам
-    <p>Таблицы выполненных и выполняемых заявок</p>
+{{ title }}
+
+{% for el in tasks %}
+<h1>{{ el.title }}</h1>
+<p> {{ el.task }}</p>
+{% endfor %}
+
 {% endblock %}
 
 {% block content2 %}
