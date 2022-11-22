@@ -1,11 +1,11 @@
 from .models import Task
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget
 
 
 class TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ["title", "task"]
+        fields = ["title", "task", "idate"]
         widgets = {
             "title": TextInput(attrs={
                 'class': 'form-control',
@@ -15,4 +15,5 @@ class TaskForm(ModelForm):
                 'class': 'form-control',
                 'plaseholder': 'введите описание'
             }),
+            "idate": SelectDateWidget()
         }

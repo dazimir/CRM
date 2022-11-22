@@ -35,5 +35,5 @@ def report_task(request):
 
 
 def status_task(request):
-    tasks = Task.objects.all()
-    return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks })
+    tasks = Task.objects.order_by('-id')
+    return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})
