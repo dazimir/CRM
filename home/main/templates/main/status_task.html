@@ -10,16 +10,38 @@ CRM "ГК-НК"
 
 
 {% block content1 %}
-<h4>{{ title }}</h4>
+<h4>{{ title1 }}</h4>
 <hr>
-
-
 {% for el in tasks %}
 <h3>{{ el.title }}</h3>
 <p> {{ el.task }}</p>
 <p> {{ el.idate}}</p>
 <hr>
 {% endfor %}
-
 {% endblock %}
+
+
+
+{% block content2 %}
+<h4>{{ title2 }}</h4>
+{% for el in cards %}
+<div class="boxShadow8 line_block">
+<hr>
+<h4>{{ el.last_name }} {{ el.name_name }} {{ el.first_name}}</h4><br>
+паспорт<br>
+<pre>выдан               : <b>{{ el.place_of_issue }}</b></pre>
+<pre>подразделение       : <b>{{ el.division_code }}</b></pre>
+<pre>дата выдачи         : <b>{{ el.date_of_issue }}</b></pre>
+<pre>дата рождения       : <b>{{ el.date_of_birth }}</b></pre>
+<pre>место рождения      : <b>{{ el.place_of_birth }}</b></pre>
+<pre>адрес регистрации   : <b>{{ el.registration_address }}</b></pre>
+<pre>адрес проживания    : <b>{{ el.residential_address }}</b></pre>
+<pre>серия номер паспорта: <b>{{ el.sn_passport }}</b></pre>
+СНИЛС<br>
+<pre>номер снилса        : <b>{{ el.snils }}</b></pre>
+<hr>
+    </div>
+{% endfor %}
+{% endblock %}
+
 

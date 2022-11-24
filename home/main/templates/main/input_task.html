@@ -12,9 +12,26 @@ CRM "ГК-НК"
 {% block content1 %}
     <form method="post">
         {% csrf_token %}
-        {{ form.title }}<br>
-        {{ form.task }}<br>
-        {{ form.idate }}<br><br>
+        Заявитель
+        {{ form.last_name }}<br>
+        {{ form.name_name }}<br>
+        {{ form.first_name }}<br>
+        <hr>
+
+        Паспортные данные
+        {{ form.place_of_issue }}<br>
+        {{ form.division_code }}<br>
+        {{ form.date_of_issue }}<br><br>
+        {{ form.date_of_birth }}<br><br>
+        {{ form.place_of_birth }}<br>
+        {{ form.registration_address }}<br>
+        {{ form.residential_address }}<br>
+        {{ form.sn_passport }}<br>
+        <hr>
+
+        СНИЛС
+        {{ form.snils }}<br>
+        <hr>
         <button type="submit" class="btn btn-secondary btn-sm">отправить</button>
         <span>{{ error }}</span>
 
