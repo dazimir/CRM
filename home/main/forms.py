@@ -15,5 +15,8 @@ class TaskForm(ModelForm):
                 'class': 'form-control',
                 'plaseholder': 'введите описание'
             }),
-            "idate": SelectDateWidget()
-        }
+            "idate": DateInput(format=('%d-%m-%Y'),
+                               attrs={'class': 'form-control-sm datepicker', 'placeholder': 'Select a date', 'type': 'date'})}
+            #                    attrs={'class':'myDateClass',
+            #                                 'placeholder':'Select a date'})
+            # }
