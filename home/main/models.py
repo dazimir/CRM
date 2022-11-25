@@ -19,6 +19,7 @@ class Task(models.Model):
 
 # Карточка заказчика ФЛ
 class Сustomer_card(models.Model):
+    date_input_card = models.DateField('Дата создания карточки')
     last_name = models.CharField('Фамилие', max_length=50)
     name_name = models.CharField('Имя', max_length=50)
     first_name = models.CharField('Отчество', max_length=50)

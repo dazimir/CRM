@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import TaskForm, Customer_cardForm
+from .forms import Task, Customer_cardForm
 
 
 def admin(request):
-    return render(request, 'admin')
+    return render(request, '/admin')
 
 
 def index(request):
@@ -40,5 +40,5 @@ def status_task(request):
 
 
 def customer_card(request):
-    cards = Сustomer_card.objects.order_by('-id')
-    return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards, 'title1': 'Отчет'})
+    cards = Customer_cardForm.objects.order_by('-id')
+    return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})
