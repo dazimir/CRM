@@ -14,8 +14,9 @@ CRM "ГК-НК"
 {% for el in cards %}
 <div class="boxShadow8 line_block">
     <hr>
-    <h4>{{ el.last_name }} {{ el.name_name }} {{ el.first_name}}</h4><br>
+    <h4>{{ el.last_name }} {{ el.name_name }} {{ el.first_name}}</h4>
     паспорт<br>
+    <hr>
     <pre>выдан               : <b>{{ el.place_of_issue }}</b></pre>
     <pre>подразделение       : <b>{{ el.division_code }}</b></pre>
     <pre>дата выдачи         : <b>{{ el.date_of_issue }}</b></pre>
@@ -25,6 +26,7 @@ CRM "ГК-НК"
     <pre>адрес проживания    : <b>{{ el.residential_address }}</b></pre>
     <pre>серия номер паспорта: <b>{{ el.sn_passport }}</b></pre>
     СНИЛС<br>
+    <hr>
     <pre>номер снилса        : <b>{{ el.snils }}</b></pre>
     <hr>
 </div>

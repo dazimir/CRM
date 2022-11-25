@@ -1,4 +1,4 @@
-from .models import Task, Сustomer_card
+from .models import Task, Card
 from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget
 
 
@@ -22,9 +22,9 @@ class TaskForm(ModelForm):
 # создаем класс КАРТОЧКА ЗАЯВИТЕЛЯ
 
 
-class Customer_cardForm(ModelForm):
+class CardForm(ModelForm):
     class Meta:
-        model = Сustomer_card
+        model = Card
         fields = ['last_name', 'name_name', 'first_name', 'place_of_issue',  'division_code', 'date_of_issue',
                   'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address', 'sn_passport', 'snils']
         widgets = {

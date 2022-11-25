@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import Task, Customer_cardForm
+from .forms import Task, Card
 
 
 def admin(request):
@@ -15,14 +15,14 @@ def index(request):
 def input_task(request):
     error = ''
     if request.method == 'POST':
-        form = Customer_cardForm(request.POST)
+        form = CardForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/')
         else:
             error = 'Поля заполнены не верно'
 
-    form = Customer_cardForm()
+    form = CardForm()
     context = {
         'form': form,
         'error': error
@@ -40,5 +40,5 @@ def status_task(request):
 
 
 def customer_card(request):
-    cards = Customer_cardForm.objects.order_by('-id')
+    cards = Card.objects.order_by('-id')
     return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})

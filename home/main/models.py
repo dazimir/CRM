@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     task = models.TextField('Описание')
@@ -15,10 +14,8 @@ class Task(models.Model):
         verbose_name_plural = 'Задачи'
 
 
-
-
 # Карточка заказчика ФЛ
-class Сustomer_card(models.Model):
+class Card(models.Model):
     date_input_card = models.DateField('Дата создания карточки')
     last_name = models.CharField('Фамилие', max_length=50)
     name_name = models.CharField('Имя', max_length=50)
@@ -40,3 +37,8 @@ class Сustomer_card(models.Model):
     class Meta:
         verbose_name = 'Карточка заявителя'
         verbose_name_plural = 'Карточки заявителей'
+
+
+# from main.models import Card
+# Card.objects.all()
+# a = Card.objects.all()[0]
