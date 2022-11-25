@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import Task, Card
+from .forms import TaskForm, CardForm
+import datetime
+from datetime import date
 
 
 def admin(request):
@@ -17,7 +19,10 @@ def input_task(request):
     if request.method == 'POST':
         form = CardForm(request.POST)
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+            obj.date_input_card = date.today()
+            obj.save()
+
             return redirect('/')
         else:
             error = 'Поля заполнены не верно'
