@@ -9,7 +9,8 @@ CRM "ГК-НК"
 {% endblock %}
 
 
-{% block content1 %}
+{% block content2 %}
+<div class="boxShadow8 line_block">
     <form method="post">
         {% csrf_token %}
         Заявитель
@@ -34,10 +35,7 @@ CRM "ГК-НК"
         <hr>
         <button type="submit" class="btn btn-secondary btn-sm">отправить</button>
         <span>{{ error }}</span>
-
+    </form>
+</div>
 {% endblock %}
 
-{% block content2 %}
-    Вторая часть блока для регистрации заявок
-    <p>Разные поля для ввода и вывода кнопки разные</p>
-{% endblock %}

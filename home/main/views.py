@@ -5,7 +5,7 @@ from .forms import TaskForm, Customer_cardForm
 
 
 def admin(request):
-    return render(request, 'admin.html')
+    return render(request, 'admin')
 
 
 def index(request):
@@ -36,6 +36,9 @@ def report_task(request):
 
 def status_task(request):
     tasks = Task.objects.order_by('-id')
+    return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})
+
+
+def customer_card(request):
     cards = Сustomer_card.objects.order_by('-id')
-    # render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks}),
-    return render(request, 'main/status_task.html', {'title2': 'Карточка', 'cards': cards, 'title1': 'Отчет', 'tasks': tasks})
+    return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards, 'title1': 'Отчет'})
