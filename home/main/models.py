@@ -34,6 +34,9 @@ class Card(models.Model):
         n = str(self.last_name + ' ' + self.name_name + ' ' + self.first_name)
         return n
 
+    def get_absolute_url(self):
+        return self.id
+
     class Meta:
         verbose_name = 'Карточка заявителя'
         verbose_name_plural = 'Карточки заявителей'

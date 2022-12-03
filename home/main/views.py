@@ -7,6 +7,8 @@ from .models import Card
 from django.shortcuts import render
 from .filters import UserFilter
 
+from django.views.generic import DetailView, UpdateView, DeleteView
+
 import datetime
 
 
@@ -24,7 +26,7 @@ def input_task(request):
         form = CardForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.date_input_card = date.today()
+            obj.date_input_card = datetime.date.today()
             obj.save()
             return redirect('/')
         else:
@@ -70,8 +72,17 @@ def customer_card(request):
                 return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})        # если поле input пустое то выводим все карточки
 
 
+class CardsDeleteView(DeleteView):
+    model = Card
+    success_url = '/main'
+    context_object_name = 'article'
+    template_name = 'main/card-delete.html'
 
 
+class CardsUpdateView(UpdateView):
+    model = Card
+    template_name = 'main/input_task.html'
 
+    form_class = CardForm
 
 # --------------------------------------------------------------------------------------------------------------------
