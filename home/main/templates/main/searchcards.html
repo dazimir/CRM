@@ -5,26 +5,17 @@ CRM "ГК-НК"
 {% endblock %}
 
 {% block content_name %}
-Карточки заявителей
+Найденные карточки
 {% endblock %}
 
 
 {% block search_card %}
-<form method="post">
-        {% csrf_token %}
-        <div>
-            <input class="form-control" name="last_name" placeholder="ФИО карточки заявителя для поиска"><br>
-            <button href="{% url 'customer_card' %}" type="post" class="btn btn-info">Найти по фамилии</button>
-            <hr>
-        </div>
-        <span>{{ error }}</span>
-    </form>
 {% endblock %}
 
 
 {% block content2 %}
 <h4>{{ title2 }}</h4>
-{% for el in cards %}
+{% for el in searchcards %}
 <div class="boxShadow8 line_block">
     <hr>
     <h4>{{ el.last_name }} {{ el.name_name }} {{ el.first_name}}</h4>

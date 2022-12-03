@@ -2,8 +2,12 @@ from django.shortcuts import render, redirect
 from django import forms
 from .models import *
 from .forms import TaskForm, CardForm
+
+from .models import Card
+from django.shortcuts import render
+from .filters import UserFilter
+
 import datetime
-from datetime import date
 
 
 def admin(request):
@@ -22,11 +26,9 @@ def input_task(request):
             obj = form.save(commit=False)
             obj.date_input_card = date.today()
             obj.save()
-
             return redirect('/')
         else:
             error = 'Поля заполнены не верно'
-
     form = CardForm()
     context = {
         'form': form,
@@ -45,5 +47,31 @@ def status_task(request):
 
 
 def customer_card(request):
-    cards = Card.objects.order_by('-id')
-    return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})
+    if request.method == 'GET':
+        cards = Card.objects.order_by('-id')
+        print('------ это GET  -------')
+        return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})   # выводим все карточки
+
+# если нажали кнопку найти по фамилии то проверяем что ввели
+    if request.method == 'POST':
+        print('------ это POST -------')
+        form = UserFilter(request.POST)
+
+        if form.is_valid():
+            # print('------ это POST после проверки на валидацию -------')
+            cards = Card.objects.all()
+            last_name = request.POST.get('last_name')
+            user_filter = Card.objects.filter(last_name=last_name)
+            print('last_name ------------  ', last_name)
+
+            if last_name != '':
+                return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
+            else:
+                return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})        # если поле input пустое то выводим все карточки
+
+
+
+
+
+
+# --------------------------------------------------------------------------------------------------------------------

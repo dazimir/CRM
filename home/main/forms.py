@@ -16,17 +16,20 @@ class TaskForm(ModelForm):
                 'placeholder': 'введите описание'
             }),
             "idate": DateInput(format=('%d-%m-%Y'),
-                               attrs={'class': 'form-control-sm datepicker', 'placeholder': 'Select a date', 'type': 'date'})}
+                               attrs={'class': 'form-control-sm datepicker', 'placeholder': 'Select a date',
+                                      'type': 'date'})}
 
-#-----------------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------------
 # создаем класс КАРТОЧКА ЗАЯВИТЕЛЯ
 
 
 class CardForm(ModelForm):
     class Meta:
         model = Card
-        fields = ['last_name', 'name_name', 'first_name', 'place_of_issue',  'division_code', 'date_of_issue',
-                  'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address', 'sn_passport', 'snils']
+        fields = ['last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code', 'date_of_issue',
+                  'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address', 'sn_passport',
+                  'snils']
         widgets = {
             "last_name": TextInput(attrs={
                 'class': 'form-control',
@@ -49,12 +52,12 @@ class CardForm(ModelForm):
                 'placeholder': 'Код подразделения'}),
 
             "date_of_issue": DateInput(format=('%d-%m-%Y'),
-                                   attrs={'class': 'form-control-sm datepicker',
-                                          'placeholder': 'Дата выдачи', 'type': 'date'}),
+                                       attrs={'class': 'form-control-sm datepicker',
+                                              'placeholder': 'Дата выдачи', 'type': 'date'}),
 
             "date_of_birth": DateInput(format=('%d-%m-%Y'),
-                                   attrs={'class': 'form-control-sm datepicker',
-                                          'placeholder': 'Дата рождения', 'type': 'date'}),
+                                       attrs={'class': 'form-control-sm datepicker',
+                                              'placeholder': 'Дата рождения', 'type': 'date'}),
 
             "place_of_birth": TextInput(attrs={
                 'class': 'form-control',
@@ -74,5 +77,9 @@ class CardForm(ModelForm):
 
             "snils": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'СНИЛС'})
+                'placeholder': 'СНИЛС'}),
+
+            "card_search": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ФИО карточки заявителя для поиска'}),
         }

@@ -42,3 +42,7 @@ class Card(models.Model):
 # from main.models import Card
 # Card.objects.all()
 # a = Card.objects.all()[0]
+
+
+# t = Card.objects.get(last_name='Пипкин')
+# t = Card.objects.filter(last_name='Мингазов')
