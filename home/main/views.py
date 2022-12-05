@@ -74,7 +74,7 @@ def customer_card(request):
 
 class CardsDeleteView(DeleteView):
     model = Card
-    success_url = '/main'
+    success_url = '/'
     context_object_name = 'article'
     template_name = 'main/card-delete.html'
 

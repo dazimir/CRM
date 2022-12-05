@@ -52,11 +52,13 @@ class CardForm(ModelForm):
                 'placeholder': 'Код подразделения'}),
 
             "date_of_issue": DateInput(format=('%d-%m-%Y'),
-                                       attrs={'class': 'form-control-sm datepicker',
+                                       attrs={'type': 'date',
+                                              'class': 'form-control',
                                               'placeholder': 'Дата выдачи', 'type': 'date'}),
 
             "date_of_birth": DateInput(format=('%d-%m-%Y'),
-                                       attrs={'class': 'form-control-sm datepicker',
+                                       attrs={'type': 'date',
+                                              'class': 'form-control',
                                               'placeholder': 'Дата рождения', 'type': 'date'}),
 
             "place_of_birth": TextInput(attrs={

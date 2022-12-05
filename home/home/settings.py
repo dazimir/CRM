@@ -101,8 +101,13 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L18N = False
+
 USE_TZ = True
 
+SHORT_DATE_FORMAT = 'j.m.Y'
+
+DATE_INPUT_FORMAT = '%d.%m.%Y'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
