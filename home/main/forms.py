@@ -27,10 +27,14 @@ class TaskForm(ModelForm):
 class CardForm(ModelForm):
     class Meta:
         model = Card
-        fields = ['last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code', 'date_of_issue',
+        fields = ['date_input_card', 'last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code', 'date_of_issue',
                   'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address', 'sn_passport',
                   'snils']
         widgets = {
+            "date_input_card": TextInput(attrs={'type': 'date',
+                                              'class': 'form-control',
+                                              'placeholder': 'Дата создания карточки', 'type': 'date'}),
+
             "last_name": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Фамилие'}),
@@ -51,15 +55,23 @@ class CardForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Код подразделения'}),
 
-            "date_of_issue": DateInput(format=('%d-%m-%Y'),
-                                       attrs={'type': 'date',
+            "date_of_issue": TextInput(attrs={'type': 'date',
                                               'class': 'form-control',
                                               'placeholder': 'Дата выдачи', 'type': 'date'}),
 
-            "date_of_birth": DateInput(format=('%d-%m-%Y'),
-                                       attrs={'type': 'date',
+            "date_of_birth": TextInput(attrs={'type': 'date',
                                               'class': 'form-control',
                                               'placeholder': 'Дата рождения', 'type': 'date'}),
+
+            # "date_of_issue": DateInput(format=('%d-%m-%Y'),
+            #                            attrs={'type': 'date',
+            #                                   'class': 'form-control',
+            #                                   'placeholder': 'Дата выдачи', 'type': 'date'}),
+            #
+            # "date_of_birth": DateInput(format=('%d-%m-%Y'),
+            #                            attrs={'type': 'date',
+            #                                   'class': 'form-control',
+            #                                   'placeholder': 'Дата рождения', 'type': 'date'}),
 
             "place_of_birth": TextInput(attrs={
                 'class': 'form-control',

@@ -81,8 +81,9 @@ class CardsDeleteView(DeleteView):
 
 class CardsUpdateView(UpdateView):
     model = Card
+    success_url = '/'
     template_name = 'main/input_task.html'
-
+    context_object_name = 'article'
     form_class = CardForm
 
 # --------------------------------------------------------------------------------------------------------------------

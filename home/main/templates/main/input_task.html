@@ -13,6 +13,7 @@ CRM "ГК-НК"
 <div class="boxShadow8 line_block">
     <form method="post">
         {% csrf_token %}
+        {{ form.date_input_card }}
         Заявитель
         {{ form.last_name }}<br>
         {{ form.name_name }}<br>
