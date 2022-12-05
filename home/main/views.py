@@ -22,6 +22,7 @@ def index(request):
 
 def input_task(request):
     error = ''
+    temp = 'Новая карточка'
     if request.method == 'POST':
         form = CardForm(request.POST)
         if form.is_valid():
@@ -34,7 +35,8 @@ def input_task(request):
     form = CardForm()
     context = {
         'form': form,
-        'error': error
+        'error': error,
+        'temp' : temp
     }
     return render(request, 'main/input_task.html', context)
 
