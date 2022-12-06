@@ -1,0 +1,72 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+CRM "ГК-НК"
+{% endblock %}
+
+{% block content_name %}
+        <div>
+            {% if temp %}
+                <h2>Регистрация карточки объекта</h2>
+                <h4>Новая карточка объекта</h4>
+            {% else %}
+                 <h4>Заводим карточку</h4>
+            {% endif %}
+            <hr>
+        </div>
+{% endblock %}
+
+
+{% block content2 %}
+<div class="boxShadow8 line_block">
+    <form method="post">
+        <p>Дата карточки объекта</p>
+        <input type='date' class="form-control" name="last_name" placeholder="Дата карточки объекта" type='date'><hr>
+        <input class="form-control" name="last_name" placeholder="Название объекта"><br>
+
+        <p><input name="dzen" type="radio" value="nedzen">Физическое лицо</p>
+        <p><input name="dzen" type="radio" value="dzen">Юридическое лицо</p>
+
+        <select id="selectvalue">
+        <option> <p style="color:#0000FF">Выбери вид работы</p></option>
+        <option>Образование ЗУ (гос.)</option>
+        <option>Образование чзу (гос.)</option>
+        <option>Раздел ЗУ (гос.)</option>
+        <option>Раздел ЗУ (собст.)</option>
+        <option>Перераспределение с гос.</option>
+        <option>Перераспределение с собст.</option>
+        <option>Уточнение гос.</option>
+        <option>Уточнение собст.</option>
+        <option>Исправление РО гос.</option>
+        <option>Исправление РО собст.</option>
+        <option>ОКС1</option>
+        <option>ОКС2</option>
+        <option>ОКС3</option>
+        </select>
+        <br>
+        <br>
+
+        <input class="form-control" name="last_name" placeholder="Номер договора"><br>
+        <input class="form-control" name="last_name" placeholder="Заказчик ФЛ"><br>
+        <input type="data" class="form-control" name="last_name" placeholder="Дата договора"><br>
+        <input class="form-control" name="last_name" placeholder="Кадастровые номера/условные номера + кнопка ППК"><br>
+        <input class="form-control" name="last_name" placeholder="Адрес объекта"><br>
+        <p>Контактное лицо</p>
+        <input class="form-control" name="last_name" placeholder="ФИО контактного лица"><br>
+        <input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp  (чекбох)"><br>
+        <input class="form-control" name="last_name" placeholder="номер телефона контактного лица + кнопка связи"><br>
+        <p>Пояснения</p>
+        <textarea class="form-control" name="last_name" placeholder="Пояснения к карточке"></textarea><br>
+        <hr>
+
+        <button href="{% url 'customer_card' %}" type="post" class="btn btn-info">Записать карточку объекта</button><br>
+        <br>
+        <button class="btn1"><i class="bi bi-whatsapp"></i> WhaysApp</button>
+        <button class="btn1"><i class="bi bi-envelope-at"></i> e-Mail</button>
+        <button class="btn1"><i class="bi bi-telephone-forward"></i> Phone</button>
+
+        <span>{{ error }}</span>
+    </form>
+</div>
+{% endblock %}
+

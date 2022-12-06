@@ -45,6 +45,9 @@ def report_task(request):
     return render(request, 'main/report_task.html')
 
 
+def input_new_task(request):
+    return render(request, 'main/input_new_task.html')
+
 def status_task(request):
     tasks = Task.objects.order_by('-id')
     return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})

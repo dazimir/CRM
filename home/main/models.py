@@ -35,7 +35,7 @@ class Card(models.Model):
         return n
 
     def get_absolute_url(self):
-        return f'/{self.id}'
+        return self.id
 
     class Meta:
         verbose_name = 'Карточка заявителя'
