@@ -8,9 +8,9 @@ CRM "ГК-НК"
         <div>
             {% if temp %}
                 <h2>Регистрация карточки объекта</h2>
-                <h4>Новая карточка объекта</h4>
+                <h4>НОВЫЙ ОБЪЕКТ</h4>
             {% else %}
-                 <h4>Заводим карточку</h4>
+                 <h4>НОВЫЙ ОБЪЕКТ</h4>
             {% endif %}
             <hr>
         </div>
@@ -24,11 +24,11 @@ CRM "ГК-НК"
         <input type='date' class="form-control" name="last_name" placeholder="Дата карточки объекта" type='date'><hr>
         <input class="form-control" name="last_name" placeholder="Название объекта"><br>
 
-        <p><input name="dzen" type="radio" value="nedzen">Физическое лицо</p>
-        <p><input name="dzen" type="radio" value="dzen">Юридическое лицо</p>
+        <p><input name="dzen" type="radio" value="nedzen"> Физическое лицо</p>
+        <p><input name="dzen" type="radio" value="dzen"> Юридическое лицо</p>
 
         <select id="selectvalue">
-        <option> <p style="color:#0000FF">Выбери вид работы</p></option>
+        <option> Выбери вид работы</option>
         <option>Образование ЗУ (гос.)</option>
         <option>Образование чзу (гос.)</option>
         <option>Раздел ЗУ (гос.)</option>
@@ -47,14 +47,19 @@ CRM "ГК-НК"
         <br>
 
         <input class="form-control" name="last_name" placeholder="Номер договора"><br>
-        <input class="form-control" name="last_name" placeholder="Заказчик ФЛ"><br>
-        <input type="data" class="form-control" name="last_name" placeholder="Дата договора"><br>
+        <input type='date' class="form-control" name="last_name" placeholder="Дата заключения договора" type='date'><hr>
+
+        <input class="form-control" name="last_name" placeholder="Фамилия (ФЛ)"><br>
+        <input class="form-control" name="last_name" placeholder="Имя (ФЛ)"><br>
+        <input class="form-control" name="last_name" placeholder="Отчество (ФЛ)"><hr><br>
+
         <input class="form-control" name="last_name" placeholder="Кадастровые номера/условные номера + кнопка ППК"><br>
         <input class="form-control" name="last_name" placeholder="Адрес объекта"><br>
         <p>Контактное лицо</p>
         <input class="form-control" name="last_name" placeholder="ФИО контактного лица"><br>
-        <input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp  (чекбох)"><br>
-        <input class="form-control" name="last_name" placeholder="номер телефона контактного лица + кнопка связи"><br>
+        <input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp"><br>
+        <input class="form-control" name="last_name" placeholder="номер телефона контактного лица"><br>
+        <input class="form-control" name="last_name" placeholder="e-Mail"><br>
         <p>Пояснения</p>
         <textarea class="form-control" name="last_name" placeholder="Пояснения к карточке"></textarea><br>
         <hr>

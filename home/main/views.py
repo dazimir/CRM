@@ -36,7 +36,7 @@ def input_task(request):
     context = {
         'form': form,
         'error': error,
-        'temp' : temp
+        'temp': temp
     }
     return render(request, 'main/input_task.html', context)
 
@@ -48,6 +48,7 @@ def report_task(request):
 def input_new_task(request):
     return render(request, 'main/input_new_task.html')
 
+
 def status_task(request):
     tasks = Task.objects.order_by('-id')
     return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})
@@ -57,9 +58,10 @@ def customer_card(request):
     if request.method == 'GET':
         cards = Card.objects.order_by('-id')
         print('------ это GET  -------')
-        return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})   # выводим все карточки
+        return render(request, 'main/customer_card.html',
+                      {'title2': 'Карточка', 'cards': cards})  # выводим все карточки
 
-# если нажали кнопку найти по фамилии то проверяем что ввели
+    # если нажали кнопку найти по фамилии то проверяем что ввели
     if request.method == 'POST':
         print('------ это POST -------')
         form = UserFilter(request.POST)
@@ -72,9 +74,11 @@ def customer_card(request):
             print('last_name ------------  ', last_name)
 
             if last_name != '':
-                return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
+                return render(request, 'main/customer_card.html',
+                              {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
             else:
-                return render(request, 'main/customer_card.html', {'title2': 'Карточка', 'cards': cards})        # если поле input пустое то выводим все карточки
+                return render(request, 'main/customer_card.html',
+                              {'title2': 'Карточка', 'cards': cards})  # если поле input пустое то выводим все карточки
 
 
 class CardsDeleteView(DeleteView):

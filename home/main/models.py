@@ -42,6 +42,47 @@ class Card(models.Model):
         verbose_name_plural = 'Карточки заявителей'
 
 
+# =====================================================================================================================
+
+class Taskobj(models.Model):
+    date_input_card = models.DateField('Дата создания карточки', null=True)
+    name_obj = models.CharField('Название объекта', max_length=150)
+    fl_ul_obj = models.BooleanField('ФЛ-ЮЛ')
+    # type_of_work = models.TextChoices('Вид работы')
+    contract_number = models.CharField('Номер договора', max_length=50)
+    date_contract = models.DateField('Дата создания карточки', null=True)
+
+    last_name = models.CharField('Фамилия (ФЛ)', max_length=50, blank=True)
+    name_name = models.CharField('Имя (ФЛ)', max_length=50, blank=True)
+    first_name = models.CharField('Отчество (ФЛ)', max_length=50, blank=True)
+
+    kad_number = models.CharField('Кадастровый номер', max_length=150, blank=True)
+    address = models.CharField('Адрес объекта', blank=True, max_length=250)
+
+    contact_person = models.CharField('Контактное лицо', blank=True, max_length=250)
+    contact = models.CharField('Контактная информация', blank=True, max_length=250)
+    contact_phone = models.CharField('Контактный телефон', blank=True, max_length=250)
+    contact_email = models.EmailField('e-Mail', blank=True, max_length=250)
+
+    information = models.TextField(blank=True)
+
+    def __str__(self):
+        n = str(self.name_obj)
+        return n
+
+    def get_absolute_url(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Карточка заявки'
+        verbose_name_plural = 'Карточки заявок'
+
+
+
+
+
+
+
 # from main.models import Card
 # Card.objects.all()
 # a = Card.objects.all()[0]
