@@ -6,11 +6,11 @@ CRM "ГК-НК"
 
 {% block content_name %}
         <div>
+            <h2>Карточка объекта</h2><hr>
             {% if temp %}
-                <h2>Регистрация карточки объекта</h2>
-                <h4>НОВЫЙ ОБЪЕКТ</h4>
+                <h4>РЕДАКТИРОВАНИЕ</h4>
             {% else %}
-                 <h4>НОВЫЙ ОБЪЕКТ</h4>
+                 <h4>НОВАЯ</h4>
             {% endif %}
             <hr>
         </div>
@@ -18,51 +18,70 @@ CRM "ГК-НК"
 
 
 {% block content2 %}
-<div class="boxShadow8 line_block">
+<div style="background-color: #E0FFFF;" class="boxShadow8 line_block">
     <form method="post">
-        <p>Дата карточки объекта</p>
-        <input type='date' class="form-control" name="last_name" placeholder="Дата карточки объекта" type='date'><hr>
-        <input class="form-control" name="last_name" placeholder="Название объекта"><br>
+        {% csrf_token %}
+        <p>дата создания карточки</p><hr>
+        {{ form.date_input_card }}
+        {{ form.name_obj }}
+        {{ form.fl_ul_obj }}
+        {{ form.type_of_work }}
+        {{ form.contract_number }}
+        {{ form.date_contract }}
+        <p>Заказчик</p><hr>
+        {{ form.last_name }}
+        {{ form.name_name }}
+        {{ form.first_name }}
+        <p>Объект</p><hr>
+        {{ form.kad_number }}
+        {{ form.address }}
+        <p>Контактные данные</p><hr>
+        {{ form.contact_person }}
+        {{ form.contact }}
+        {{ form.contact_phone }}
+        {{ form.contact_email }}
+        <p>Информация</p><hr>
+        {{ form.information }}
 
-        <p><input name="dzen" type="radio" value="nedzen"> Физическое лицо</p>
-        <p><input name="dzen" type="radio" value="dzen"> Юридическое лицо</p>
 
-        <select id="selectvalue">
-        <option> Выбери вид работы</option>
-        <option>Образование ЗУ (гос.)</option>
-        <option>Образование чзу (гос.)</option>
-        <option>Раздел ЗУ (гос.)</option>
-        <option>Раздел ЗУ (собст.)</option>
-        <option>Перераспределение с гос.</option>
-        <option>Перераспределение с собст.</option>
-        <option>Уточнение гос.</option>
-        <option>Уточнение собст.</option>
-        <option>Исправление РО гос.</option>
-        <option>Исправление РО собст.</option>
-        <option>ОКС1</option>
-        <option>ОКС2</option>
-        <option>ОКС3</option>
-        </select>
-        <br>
-        <br>
+        <!--<p>Дата карточки объекта</p>-->
+        <!--<input type='date' class="form-control" name="last_name" placeholder="Дата карточки объекта" type='date'><hr>-->
+        <!--<input class="form-control" name="last_name" placeholder="Название объекта"><br>-->
 
-        <input class="form-control" name="last_name" placeholder="Номер договора"><br>
-        <input type='date' class="form-control" name="last_name" placeholder="Дата заключения договора" type='date'><hr>
+        <!--<p><input name="dzen" type="radio" value="nedzen">Физическое лицо</p>-->
+        <!--<p><input name="dzen" type="radio" value="dzen">Юридическое лицо</p>-->
 
-        <input class="form-control" name="last_name" placeholder="Фамилия (ФЛ)"><br>
-        <input class="form-control" name="last_name" placeholder="Имя (ФЛ)"><br>
-        <input class="form-control" name="last_name" placeholder="Отчество (ФЛ)"><hr><br>
+        <!--<select id="selectvalue">-->
+        <!--<option> <p style="color:#0000FF">Выбери вид работы</p></option>-->
+        <!--<option>Образование ЗУ (гос.)</option>-->
+        <!--<option>Образование чзу (гос.)</option>-->
+        <!--<option>Раздел ЗУ (гос.)</option>-->
+        <!--<option>Раздел ЗУ (собст.)</option>-->
+        <!--<option>Перераспределение с гос.</option>-->
+        <!--<option>Перераспределение с собст.</option>-->
+        <!--<option>Уточнение гос.</option>-->
+        <!--<option>Уточнение собст.</option>-->
+        <!--<option>Исправление РО гос.</option>-->
+        <!--<option>Исправление РО собст.</option>-->
+        <!--<option>ОКС1</option>-->
+        <!--<option>ОКС2</option>-->
+        <!--<option>ОКС3</option>-->
+        <!--</select>-->
+        <!--<br>-->
+        <!--<br>-->
 
-        <input class="form-control" name="last_name" placeholder="Кадастровые номера/условные номера + кнопка ППК"><br>
-        <input class="form-control" name="last_name" placeholder="Адрес объекта"><br>
-        <p>Контактное лицо</p>
-        <input class="form-control" name="last_name" placeholder="ФИО контактного лица"><br>
-        <input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp"><br>
-        <input class="form-control" name="last_name" placeholder="номер телефона контактного лица"><br>
-        <input class="form-control" name="last_name" placeholder="e-Mail"><br>
-        <p>Пояснения</p>
-        <textarea class="form-control" name="last_name" placeholder="Пояснения к карточке"></textarea><br>
-        <hr>
+        <!--<input class="form-control" name="last_name" placeholder="Номер договора"><br>-->
+        <!--<input class="form-control" name="last_name" placeholder="Заказчик ФЛ"><br>-->
+        <!--<input type="data" class="form-control" name="last_name" placeholder="Дата договора"><br>-->
+        <!--<input class="form-control" name="last_name" placeholder="Кадастровые номера/условные номера + кнопка ППК"><br>-->
+        <!--<input class="form-control" name="last_name" placeholder="Адрес объекта"><br>-->
+        <!--<p>Контактное лицо</p>-->
+        <!--<input class="form-control" name="last_name" placeholder="ФИО контактного лица"><br>-->
+        <!--<input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp  (чекбох)"><br>-->
+        <!--<input class="form-control" name="last_name" placeholder="номер телефона контактного лица + кнопка связи"><br>-->
+        <!--<p>Пояснения</p>-->
+        <!--<textarea class="form-control" name="last_name" placeholder="Пояснения к карточке"></textarea><br>-->
+        <!--<hr>-->
 
         <button href="{% url 'customer_card' %}" type="post" class="btn btn-info">Записать карточку объекта</button><br>
         <br>

@@ -1,4 +1,4 @@
-from .models import Task, Card
+from .models import Task, Card, Taskobj
 from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget
 
 
@@ -97,3 +97,19 @@ class CardForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'ФИО карточки заявителя для поиска'}),
         }
+
+
+# ======================================================================================================================
+class TaskobjForm(ModelForm):
+    class Meta:
+        model = Taskobj
+        fields = ['date_input_card', 'name_obj', 'fl_ul_obj', 'type_of_work', 'contract_number', 'date_contract', 'last_name',
+                  'name_name', 'first_name', 'kad_number', 'address', 'contact_person', 'contact', 'contact_phone', 'contact_email', 'information']
+        widgets = {"date_input_card": TextInput(attrs={'type': 'date',
+                                              'class': 'form-control',
+                                              'placeholder': 'Дата создания карточки', 'type': 'date'}),
+
+                   "name_obj": TextInput(attrs={
+                       'class': 'form-control',
+                       'placeholder': 'Название объекта'})
+                   }

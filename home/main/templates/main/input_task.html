@@ -6,7 +6,7 @@ CRM "ГК-НК"
 
 {% block content_name %}
         <div>
-            <h2>Регистрация карточки клиента</h2><hr>
+            <h2>Регистрация клиента</h2><hr>
             {% if temp %}
                 <h4>НОВАЯ</h4>
             {% else %}
@@ -18,7 +18,7 @@ CRM "ГК-НК"
 
 
 {% block content2 %}
-<div class="boxShadow8 line_block">
+<div style="background-color: #FFF0F5" class="boxShadow8 line_block">
     <form method="post">
         {% csrf_token %}
         {{ form.date_input_card }}

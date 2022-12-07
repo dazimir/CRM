@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import TaskForm, CardForm
+from .forms import TaskForm, CardForm, TaskobjForm
 
-from .models import Card
+from .models import Card, Taskobj
 from django.shortcuts import render
 from .filters import UserFilter
 
@@ -95,4 +95,14 @@ class CardsUpdateView(UpdateView):
     context_object_name = 'article'
     form_class = CardForm
 
+
 # --------------------------------------------------------------------------------------------------------------------
+
+def input_new_task(request):
+    error = ''
+    form = TaskobjForm()
+    context = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'main/input_new_task.html', context)
