@@ -50,7 +50,10 @@ class Taskobj(models.Model):
 
     date_input_card = models.DateField('Дата создания карточки', null=True)
     name_obj = models.CharField('Название объекта', max_length=150)
-    fl_ul_obj = models.BooleanField('ФЛ-ЮЛ')
+
+    F_U = (('1', 'Физическое лицо'), ('2', 'Юридическое лицо'))
+    fl_ul_obj = models.CharField('Физ_Юл', max_length=2, choices=F_U, blank=True)
+
     job = (
         ('ЗУ', (
             ('01', 'Образование гос.'),
@@ -80,7 +83,7 @@ class Taskobj(models.Model):
             ('33', 'Ортофотосъемка')
         ))
     )
-    type_of_work = models.CharField(max_length=2, choices=job, blank=True)
+    type_of_work = models.CharField('Вид работы', max_length=2, choices=job, blank=True)
     contract_number = models.CharField('Номер договора', max_length=50)
     date_contract = models.DateField('Дата создания карточки', null=True)
 
@@ -92,7 +95,7 @@ class Taskobj(models.Model):
     address = models.CharField('Адрес объекта', blank=True, max_length=250)
 
     contact_person = models.CharField('Контактное лицо', blank=True, max_length=250)
-    contact = models.CharField('Контактная информация', blank=True, max_length=250)
+    contact = models.CharField('Способ контакта', blank=True, max_length=250)
     contact_phone = models.CharField('Контактный телефон', blank=True, max_length=250)
     contact_email = models.EmailField('e-Mail', blank=True, max_length=250)
 

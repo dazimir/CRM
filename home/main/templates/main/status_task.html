@@ -24,15 +24,32 @@ CRM "ГК-НК"
 
 {% block content2 %}
 <h4>{{ title2 }}</h4>
-{% for el in tasks %}
 <div class="boxShadow8 line_block">
-    <h4>{{ el.title }}</h4>
-    <hr>
-    <pre>{{ el.task }}</pre>
-    <pre>{{ el.idate }}</pre>
+    <h1>Первый блок</h1>
     <hr>
 </div>
-{% endfor %}
+
+<div class="boxShadow8 line_block">
+<h1 class="form-header">Насколько вероятно Вы порекомендуете инструмент?</h1>
+        <div class="rating-wrapper">
+
+            <label class="radio-container">1
+                <input type="radio" name="rating" value="1">
+                <span class="radio-checkmark"></span>
+            </label>
+
+            <label class="radio-container">2
+                <input type="radio" name="rating" value="2">
+                <span class="radio-checkmark"></span>
+            </label>
+
+            <label class="radio-container">3
+                <input type="radio" name="rating" value="3">
+                <span class="radio-checkmark"></span>
+            </label>
+
+       </div>
+</div>
 {% endblock %}
 
 

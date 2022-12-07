@@ -1,5 +1,6 @@
 from .models import Task, Card, Taskobj
-from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget
+from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget, BooleanField, \
+    CheckboxInput, RadioSelect, Select, ChoiceField
 
 
 class TaskForm(ModelForm):
@@ -23,17 +24,17 @@ class TaskForm(ModelForm):
 # -----------------------------------------------------------------------------------------------------------------------------
 # создаем класс КАРТОЧКА ЗАЯВИТЕЛЯ
 
-
 class CardForm(ModelForm):
     class Meta:
         model = Card
-        fields = ['date_input_card', 'last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code', 'date_of_issue',
+        fields = ['date_input_card', 'last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code',
+                  'date_of_issue',
                   'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address', 'sn_passport',
                   'snils']
         widgets = {
             "date_input_card": TextInput(attrs={'type': 'date',
-                                              'class': 'form-control',
-                                              'placeholder': 'Дата создания карточки', 'type': 'date'}),
+                                                'class': 'form-control',
+                                                'placeholder': 'Дата создания карточки', 'type': 'date'}),
 
             "last_name": TextInput(attrs={
                 'class': 'form-control',
@@ -103,13 +104,89 @@ class CardForm(ModelForm):
 class TaskobjForm(ModelForm):
     class Meta:
         model = Taskobj
-        fields = ['date_input_card', 'name_obj', 'fl_ul_obj', 'type_of_work', 'contract_number', 'date_contract', 'last_name',
-                  'name_name', 'first_name', 'kad_number', 'address', 'contact_person', 'contact', 'contact_phone', 'contact_email', 'information']
-        widgets = {"date_input_card": TextInput(attrs={'type': 'date',
-                                              'class': 'form-control',
-                                              'placeholder': 'Дата создания карточки', 'type': 'date'}),
+        fields = ['date_input_card', 'name_obj', 'fl_ul_obj', 'type_of_work', 'contract_number', 'date_contract',
+                  'last_name','name_name', 'first_name', 'kad_number', 'address', 'contact_person', 'contact',
+                  'contact_phone', 'contact_email', 'information']
+        choices = ['Физическое лицо', 'Юридическое лицо']
+        widgets = {
+            "date_input_card": TextInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+                'placeholder': 'Дата создания карточки',
+                'type': 'date'}),
 
-                   "name_obj": TextInput(attrs={
-                       'class': 'form-control',
-                       'placeholder': 'Название объекта'})
-                   }
+           "name_obj": TextInput(attrs={
+               'class': 'form-control',
+               'placeholder': 'Название объекта'}),
+# =================================================================
+
+           "fl_ul_obj": Select(attrs={
+               'class': 'form-select',
+               'placeholder': 'ФЛ-ЮЛ'}),
+
+# =================================================================
+
+           "type_of_work": Select(attrs={
+               'class': 'form-select'}),
+
+            "contract_number": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Номер договора'}),
+
+            "date_contract": TextInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+                'placeholder': 'Дата создания карточки',
+                'type': 'date'}),
+
+            "last_name": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder': 'Фамилия (ФЛ)'}),
+
+            "name_name": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder': 'Имя (ФЛ)'}),
+
+            "first_name": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder': 'Отчество'}),
+
+            "kad_number": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder':'Кадастровый номер'}),
+
+            "address": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder':'Адрес'}),
+
+            "contact_person": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder':'Контактное лицо'}),
+
+            "contact": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder': 'Способ контакта'}),
+
+            "contact_phone": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder':'Номер телефон для связи'}),
+
+            "contact_email": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder':'Email'}),
+
+            "information": TextInput(attrs={
+                'type': 'text',
+                'class': 'form-control',
+                'placeholder': 'Информация по заявке'}),
+
+            }

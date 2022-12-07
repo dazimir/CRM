@@ -21,74 +21,36 @@ CRM "ГК-НК"
 <div style="background-color: #E0FFFF;" class="boxShadow8 line_block">
     <form method="post">
         {% csrf_token %}
-        <p>дата создания карточки</p><hr>
-        {{ form.date_input_card }}
-        {{ form.name_obj }}
-        {{ form.fl_ul_obj }}
-        {{ form.type_of_work }}
-        {{ form.contract_number }}
-        {{ form.date_contract }}
+        <p>дата создания карточки</p>
+        {{ form.date_input_card }}<br><hr>
+        {{ form.name_obj }}<br>
+        {{ form.fl_ul_obj }}<br>
+        {{ form.type_of_work }}<br>
+        {{ form.contract_number }}<br>
+        {{ form.date_contract }}<br>
         <p>Заказчик</p><hr>
-        {{ form.last_name }}
-        {{ form.name_name }}
-        {{ form.first_name }}
+        {{ form.last_name }}<br>
+        {{ form.name_name }}<br>
+        {{ form.first_name }}<br>
+
+    </div>
+
+<div style="background-color: #E0FFFF;" class="boxShadow8 line_block">
         <p>Объект</p><hr>
-        {{ form.kad_number }}
-        {{ form.address }}
+        {{ form.kad_number }}<br>
+        {{ form.address }}<br>
         <p>Контактные данные</p><hr>
-        {{ form.contact_person }}
-        {{ form.contact }}
-        {{ form.contact_phone }}
-        {{ form.contact_email }}
+        {{ form.contact_person }}<br>
+        {{ form.contact }}<br>
+        {{ form.contact_phone }}<br>
+        {{ form.contact_email }}<br>
         <p>Информация</p><hr>
-        {{ form.information }}
-
-
-        <!--<p>Дата карточки объекта</p>-->
-        <!--<input type='date' class="form-control" name="last_name" placeholder="Дата карточки объекта" type='date'><hr>-->
-        <!--<input class="form-control" name="last_name" placeholder="Название объекта"><br>-->
-
-        <!--<p><input name="dzen" type="radio" value="nedzen">Физическое лицо</p>-->
-        <!--<p><input name="dzen" type="radio" value="dzen">Юридическое лицо</p>-->
-
-        <!--<select id="selectvalue">-->
-        <!--<option> <p style="color:#0000FF">Выбери вид работы</p></option>-->
-        <!--<option>Образование ЗУ (гос.)</option>-->
-        <!--<option>Образование чзу (гос.)</option>-->
-        <!--<option>Раздел ЗУ (гос.)</option>-->
-        <!--<option>Раздел ЗУ (собст.)</option>-->
-        <!--<option>Перераспределение с гос.</option>-->
-        <!--<option>Перераспределение с собст.</option>-->
-        <!--<option>Уточнение гос.</option>-->
-        <!--<option>Уточнение собст.</option>-->
-        <!--<option>Исправление РО гос.</option>-->
-        <!--<option>Исправление РО собст.</option>-->
-        <!--<option>ОКС1</option>-->
-        <!--<option>ОКС2</option>-->
-        <!--<option>ОКС3</option>-->
-        <!--</select>-->
-        <!--<br>-->
-        <!--<br>-->
-
-        <!--<input class="form-control" name="last_name" placeholder="Номер договора"><br>-->
-        <!--<input class="form-control" name="last_name" placeholder="Заказчик ФЛ"><br>-->
-        <!--<input type="data" class="form-control" name="last_name" placeholder="Дата договора"><br>-->
-        <!--<input class="form-control" name="last_name" placeholder="Кадастровые номера/условные номера + кнопка ППК"><br>-->
-        <!--<input class="form-control" name="last_name" placeholder="Адрес объекта"><br>-->
-        <!--<p>Контактное лицо</p>-->
-        <!--<input class="form-control" name="last_name" placeholder="ФИО контактного лица"><br>-->
-        <!--<input class="form-control" name="last_name" placeholder="Телефон/email/csm/WhatsApp  (чекбох)"><br>-->
-        <!--<input class="form-control" name="last_name" placeholder="номер телефона контактного лица + кнопка связи"><br>-->
-        <!--<p>Пояснения</p>-->
-        <!--<textarea class="form-control" name="last_name" placeholder="Пояснения к карточке"></textarea><br>-->
-        <!--<hr>-->
-
+        {{ form.information }}<br>
         <button href="{% url 'customer_card' %}" type="post" class="btn btn-info">Записать карточку объекта</button><br>
         <br>
         <button class="btn1"><i class="bi bi-whatsapp"></i> WhaysApp</button>
         <button class="btn1"><i class="bi bi-envelope-at"></i> e-Mail</button>
         <button class="btn1"><i class="bi bi-telephone-forward"></i> Phone</button>
-
         <span>{{ error }}</span>
     </form>
 </div>

@@ -100,6 +100,13 @@ class CardsUpdateView(UpdateView):
 
 def input_new_task(request):
     error = ''
+    if request.method == 'POST':
+        form = TaskobjForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Поля заполнены не верно'
     form = TaskobjForm()
     context = {
         'form': form,
