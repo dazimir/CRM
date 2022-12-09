@@ -13,6 +13,5 @@ urlpatterns = [
     path('Input_new_task', views.input_new_task, name='input_new_task'),
     path('<int:pk>/card-delete', views.CardsDeleteView.as_view(), name='card-delete'),
     path('<int:pk>/card-update', views.CardsUpdateView.as_view(), name='card-update'),
-
     path('admin', views.admin, name='admin'),
 ]

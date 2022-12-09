@@ -1,4 +1,93 @@
+from enum import unique
 from django.db import models
+
+
+# =====================================================================================================================
+# Таблица "Auntifications"  -- зарегистрированные операторы CRM
+class Auntifications(models.Model):
+    username = models.CharField('Имя оператора', max_length=200, unique=True)
+    email = models.EmailField('почта оператора', max_length=200, unique=True, null=True, blank=True)
+    display_name = models.CharField('Ник оператора', max_length=200, unique=True)
+    password = models.CharField('Пароль оператора', max_length=200)
+    state = models.CharField('Статус оператора', max_length=200, unique=True)
+
+    def __str__(self):
+        n = str(self.username)
+        return n
+
+    def get_absolute_url(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Оператор CRM'
+        verbose_name_plural = 'Операторы CRM'
+
+
+# =====================================================================================================================
+# Таблица "Region"  -- Район работы
+class Region(models.Model):
+    obl = models.CharField('Область/республика', max_length=200, unique=True)
+    raion = models.CharField('Район', max_length=200, unique=True)
+    selpo = models.CharField('Сельское поселение', max_length=200, unique=True)
+
+    def __str__(self):
+        n = str(self.obl + ' ' + self.raion + ' ' + self.selpo)
+        return n
+
+    class Meta:
+        verbose_name = 'Район работы'
+        verbose_name_plural = 'Районы работ'
+
+
+# =====================================================================================================================
+# Таблица "individual_customer"  -- Заказчик физическое лицо
+class IndividualCustomer(models.Model):
+    date_input_card = models.DateField('Дата создания карточки', null=True)
+    last_name = models.CharField('Фамилие', max_length=50)
+    name_name = models.CharField('Имя', max_length=50)
+    first_name = models.CharField('Отчество', max_length=50)
+    place_of_issue = models.CharField('Место выдачи', max_length=200)
+    division_code = models.CharField('Код подразделения', max_length=7)
+    date_of_issue = models.DateField('Дата выдачи')
+    date_of_birth = models.DateField('Дата рождения')
+    place_of_birth = models.CharField('Место рождения', max_length=250)
+    registration_address = models.CharField('Адрес регистрации', max_length=250)
+    residential_address = models.CharField('Адрес проживания', max_length=250)
+    sn_passport = models.CharField('Серия и номер паспорта', max_length=15)
+    snils = models.CharField('Номер СНИЛС', max_length=14)
+
+    def __str__(self):
+        n = str(self.last_name + ' ' + self.name_name + ' ' + self.first_name)
+        return n
+
+    def get_absolute_url(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Заявитель ФЛ'
+        verbose_name_plural = 'Заявители ФЛ'
+
+
+# =====================================================================================================================
+# Таблица "OrganizationCustomer"  -- Заказчик юридическое лицо
+class OrganizationCustomer(models.Model):
+    date_input_card = models.DateField('Дата')
+    company_name = models.CharField('Название фирмы', max_length=200, unique=True)
+    inn = models.BigIntegerField('ИНН организации', null=True, blank=True)
+    ogrn = models.BigIntegerField('ОГРН организации', null=True, blank=True)
+    company_address = models.CharField('Адрес фирмы', max_length=200, unique=True)
+    company_phone = models.CharField('Телефон', max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        n = str(self.company_name)
+        return n
+
+    def get_absolute_url(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Карточка ЮЛ'
+        verbose_name_plural = 'Карточки ЮЛ'
 
 
 class Task(models.Model):
@@ -43,7 +132,6 @@ class Card(models.Model):
 
 
 # =====================================================================================================================
-# ========================================================================================================================
 
 class Taskobj(models.Model):
     one_to_many = models.ForeignKey('Card', on_delete=models.PROTECT)
@@ -111,16 +199,3 @@ class Taskobj(models.Model):
     class Meta:
         verbose_name = 'Карточка заявки'
         verbose_name_plural = 'Карточки заявок'
-
-# ========================================================================================================================
-
-
-
-
-# from main.models import Card
-# Card.objects.all()
-# a = Card.objects.all()[0]
-
-
-# t = Card.objects.get(last_name='Пипкин')
-# t = Card.objects.filter(last_name='Мингазов')
