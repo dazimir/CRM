@@ -1,6 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
 from .models import Task, Card, Taskobj, IndividualCustomer, OrganizationCustomer, Auntifications, Region
 
 admin.site.register(Task)

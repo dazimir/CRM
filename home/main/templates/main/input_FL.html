@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+CRM "ГК-НК"
+{% endblock %}
+
+{% block content_name %}
+        <div>
+            <h2>{{ page_title }}</h2><hr>
+            {% if temp %}
+                <h4>НОВАЯ</h4>
+            {% else %}
+                 <h4>РЕДАКТИРОВАНИЕ</h4>
+            {% endif %}
+
+        </div>
+{% endblock %}
+
+
+
+
+
+
+{% block content2 %}
+<form method="post">
+<div style="background-color: #ccff66" class="boxShadow8 line_block">
+
+        {% csrf_token %}
+        {{ form.date_input_card }}
+        Заявитель
+        {{ form.last_name }}<br>
+        {{ form.name_name }}<br>
+        {{ form.first_name }}<br>
+        <hr>
+
+</div>
+
+<div style="background-color: #ccff66" class="boxShadow8 line_block">
+        Паспортные данные
+        {{ form.place_of_issue }}<br>
+        {{ form.division_code }}<br>
+        {{ form.date_of_issue }}<br>
+        {{ form.date_of_birth }}<br>
+        {{ form.place_of_birth }}<br>
+        {{ form.registration_address }}<br>
+        {{ form.residential_address }}<br>
+        {{ form.sn_passport }}<hr>
+
+        СНИЛС
+        {{ form.snils }}<hr>
+        <button type="submit" class="btn btn-secondary btn-sm">Записать</button>
+        <span>{{ error }}</span>
+</div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+CRM "ГК-НК"
+{% endblock %}
+
+{% block content_name %}
+        <div>
+            <h2>{{ page_title }}</h2><hr>
+                <h4>Базовые настройки CRM</h4>
+        </div>
+{% endblock %}
+
+
+
+
+
+
+{% block content2 %}
+<form method="post">
+<div style="background-color: #ccff66" class="boxShadow8 line_block">
+        {% csrf_token %}
+        <h4>Районы работ</h4>
+
+        {{ form.obl }}<br>
+        {{ form.raion }}<br>
+        {{ form.selpo }}<br>
+        <hr>
+        <button type="submit" class="btn btn-secondary btn-sm">Записать</button>
+        <span>{{ error }}</span>
+</div>
+
+<div style="background-color: #ccff66" class="boxShadow8 line_block">
+        <h4>Шаблоны отчетов</h4>
+
+        <button type="submit" class="btn btn-secondary btn-sm">Записать</button>
+        <span>{{ error }}</span>
+</div>
+</form>
+
+{% endblock %}

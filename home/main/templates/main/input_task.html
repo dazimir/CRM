@@ -12,14 +12,15 @@ CRM "ГК-НК"
             {% else %}
                  <h4>РЕДАКТИРОВАНИЕ</h4>
             {% endif %}
-            <hr>
+
         </div>
 {% endblock %}
 
 
 {% block content2 %}
+<form method="post">
 <div style="background-color: #FFF0F5" class="boxShadow8 line_block">
-    <form method="post">
+
         {% csrf_token %}
         {{ form.date_input_card }}
         Заявитель
@@ -28,6 +29,9 @@ CRM "ГК-НК"
         {{ form.first_name }}<br>
         <hr>
 
+</div>
+
+<div style="background-color: #FFF0F5" class="boxShadow8 line_block">
         Паспортные данные
         {{ form.place_of_issue }}<br>
         {{ form.division_code }}<br>
@@ -36,16 +40,14 @@ CRM "ГК-НК"
         {{ form.place_of_birth }}<br>
         {{ form.registration_address }}<br>
         {{ form.residential_address }}<br>
-        {{ form.sn_passport }}<br>
-        <hr>
+        {{ form.sn_passport }}<hr>
 
         СНИЛС
-        {{ form.snils }}<br>
-        {{ form.card_search }}<br>
-        <hr>
+        {{ form.snils }}<hr>
         <button type="submit" class="btn btn-secondary btn-sm">Записать</button>
         <span>{{ error }}</span>
-    </form>
 </div>
+</form>
+
 {% endblock %}
 

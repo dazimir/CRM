@@ -1,4 +1,4 @@
-from .models import Task, Card, Taskobj
+from .models import Task, Card, Taskobj, IndividualCustomer, OrganizationCustomer, Region
 from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget, BooleanField, \
     CheckboxInput, RadioSelect, Select, ChoiceField
 
@@ -190,3 +190,118 @@ class TaskobjForm(ModelForm):
                 'placeholder': 'Информация по заявке'}),
 
             }
+
+
+class InputFLForm(ModelForm):
+    class Meta:
+        model = IndividualCustomer
+        fields = ['date_input_card', 'last_name', 'name_name', 'first_name', 'place_of_issue', 'division_code',
+                  'date_of_issue', 'date_of_birth', 'place_of_birth', 'registration_address', 'residential_address',
+                  'sn_passport', 'snils']
+        widgets = {
+            "date_input_card": TextInput(attrs={'type': 'date',
+                                                'class': 'form-control',
+                                                'placeholder': 'Дата создания карточки', 'type': 'date'}),
+
+            "last_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Фамилия'}),
+
+            "name_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Имя'}),
+
+            "first_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Отчество'}),
+
+            "place_of_issue": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Место выдачи паспорта'}),
+
+            "division_code": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Код подразделения'}),
+
+            "date_of_issue": TextInput(attrs={'type': 'date',
+                                              'class': 'form-control',
+                                              'placeholder': 'Дата выдачи', 'type': 'date'}),
+
+            "date_of_birth": TextInput(attrs={'type': 'date',
+                                              'class': 'form-control',
+                                              'placeholder': 'Дата рождения', 'type': 'date'}),
+
+            "place_of_birth": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Место рождения'}),
+
+            "registration_address": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Адрес регистрации'}),
+
+            "residential_address": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Фактический адрес'}),
+
+            "sn_passport": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Серия и номер паспорта'}),
+
+            "snils": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'СНИЛС'}),
+
+            "card_search": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ФИО карточки заявителя для поиска'}),
+        }
+
+
+class InputULForm(ModelForm):
+    class Meta:
+        model = OrganizationCustomer
+        fields = ['date_input_card', 'company_name', 'inn', 'ogrn', 'company_address', 'company_phone']
+        widgets = {
+            "date_input_card": TextInput(attrs={'type': 'date',
+                                                'class': 'form-control',
+                                                'placeholder': 'Дата создания карточки', 'type': 'date'}),
+
+            "company_name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Название фирмы'}),
+
+            "inn": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ИНН фирмы'}),
+
+            "ogrn": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'ОГРН Фирмы'}),
+
+            "company_address": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Адрес фирмы'}),
+
+            "company_phone": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Телефон фирмы'}),
+        }
+
+
+class SettingsForm(ModelForm):
+    class Meta:
+        model = Region
+        fields = ['obl', 'raion', 'selpo']
+        widgets = {
+            "obl": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Область/республика'}),
+
+            "raion": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Район'}),
+
+            "selpo": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Сельское поселение'}),
+        }

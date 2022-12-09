@@ -12,14 +12,15 @@ CRM "ГК-НК"
             {% else %}
                  <h4>НОВАЯ</h4>
             {% endif %}
-            <hr>
+
         </div>
 {% endblock %}
 
 
 {% block content2 %}
+<form method="post">
 <div style="background-color: #E0FFFF;" class="boxShadow8 line_block">
-    <form method="post">
+
         {% csrf_token %}
         <p>дата создания карточки</p>
         {{ form.date_input_card }}<br><hr>
@@ -32,8 +33,7 @@ CRM "ГК-НК"
         {{ form.last_name }}<br>
         {{ form.name_name }}<br>
         {{ form.first_name }}<br>
-
-    </div>
+</div>
 
 <div style="background-color: #E0FFFF;" class="boxShadow8 line_block">
         <p>Объект</p><hr>
@@ -52,7 +52,8 @@ CRM "ГК-НК"
         <button class="btn1"><i class="bi bi-envelope-at"></i> e-Mail</button>
         <button class="btn1"><i class="bi bi-telephone-forward"></i> Phone</button>
         <span>{{ error }}</span>
-    </form>
 </div>
+</form>
+
 {% endblock %}
 

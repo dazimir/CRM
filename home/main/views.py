@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import TaskForm, CardForm, TaskobjForm
+from .forms import TaskForm, CardForm, TaskobjForm, InputFLForm, InputULForm, SettingsForm
 
 from .models import Card, Taskobj
 from django.shortcuts import render
@@ -96,7 +96,7 @@ class CardsUpdateView(UpdateView):
     form_class = CardForm
 
 
-# --------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
 
 def input_new_task(request):
     error = ''
@@ -113,3 +113,59 @@ def input_new_task(request):
         'error': error
     }
     return render(request, 'main/input_new_task.html', context)
+
+#--------------------------------------------------------------------------------------------------------------------
+def input_FL(request):
+    error = ''
+    if request.method == 'POST':
+        form = InputFLForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Поля заполнены не верно'
+    form = InputFLForm()
+    context = {
+        'form': form,
+        'error': error,
+        'page_title': 'Ввод данных заявителя, физическое лицо'
+    }
+    return render(request, 'main/input_FL.html', context)
+
+
+#--------------------------------------------------------------------------------------------------------------------
+def input_UL(request):
+    error = ''
+    if request.method == 'POST':
+        form = InputULForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Поля заполнены не верно'
+    form = InputULForm()
+    context = {
+        'form': form,
+        'error': error,
+        'page_title': 'Ввод данных заявителя, юридического лица'
+    }
+    return render(request, 'main/input_UL.html', context)
+
+
+#--------------------------------------------------------------------------------------------------------------------
+def settings_crm(request):
+    error = ''
+    if request.method == 'POST':
+        form = SettingsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            error = 'Поля заполнены не верно'
+    form = SettingsForm()
+    context = {
+        'form': form,
+        'error': error,
+        'page_title': 'Настройка CRM'
+    }
+    return render(request, 'main/settings_crm.html', context)
