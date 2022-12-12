@@ -26,9 +26,9 @@ class Auntifications(models.Model):
 # =====================================================================================================================
 # Таблица "Region"  -- Район работы
 class Region(models.Model):
-    obl = models.CharField('Область/республика', max_length=200, unique=True)
-    raion = models.CharField('Район', max_length=200, unique=True)
-    selpo = models.CharField('Сельское поселение', max_length=200, unique=True)
+    obl = models.CharField('Область/республика', max_length=200)
+    raion = models.CharField('Район', max_length=200)
+    selpo = models.CharField('Сельское поселение', max_length=200)
 
     def __str__(self):
         n = str(self.obl + ' ' + self.raion + ' ' + self.selpo)
