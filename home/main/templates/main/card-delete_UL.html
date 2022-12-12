@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+
+{% block content_name %}
+Удаление карточки (Юридическое лицо)
+{% endblock %}
+
+
+{%  block content2  %}
+    <div class="features">
+        <h1>{{ article.company_name }}</h1>
+        <form method="post">
+            <hr>
+            {% csrf_token %}
+            <button class="btn btn-danger btn-sm" type="submit">Удалить карточку</button>
+            <a href="{% url 'customer_card_UL' %}" class="btn btn-info btn-sm">Вернуться</a>
+        </form>
+    </div>
+{%  endblock  %}

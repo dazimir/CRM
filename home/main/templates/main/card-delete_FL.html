@@ -2,7 +2,7 @@
 
 
 {% block content_name %}
-Удаление карточки
+Удаление карточки (Физическое лицо)
 {% endblock %}
 
 
@@ -13,7 +13,7 @@
             <hr>
             {% csrf_token %}
             <button class="btn btn-danger btn-sm" type="submit">Удалить карточку</button>
-            <a href="{% url 'customer_card' %}" class="btn btn-info btn-sm">Вернуться</a>
+            <a href="{% url 'customer_card_FL' %}" class="btn btn-info btn-sm">Вернуться</a>
         </form>
     </div>
 {%  endblock  %}

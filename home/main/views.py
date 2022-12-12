@@ -53,12 +53,12 @@ def status_task(request):
     tasks = Task.objects.order_by('-id')
     return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})
 
-
-def customer_card(request):
+#=======================================================================================================================
+def customer_card_FL(request):
     if request.method == 'GET':
-        cards = Card.objects.order_by('-id')
+        cards = IndividualCustomer.objects.order_by('-id')
         print('------ это GET  -------')
-        return render(request, 'main/customer_card.html',
+        return render(request, 'main/customer_card_FL.html',
                       {'title2': 'Карточка', 'cards': cards})  # выводим все карточки
 
     # если нажали кнопку найти по фамилии то проверяем что ввели
@@ -68,34 +68,84 @@ def customer_card(request):
 
         if form.is_valid():
             # print('------ это POST после проверки на валидацию -------')
-            cards = Card.objects.all()
+            cards = IndividualCustomer.objects.all()
             last_name = request.POST.get('last_name')
-            user_filter = Card.objects.filter(last_name=last_name)
+            user_filter = IndividualCustomer.objects.filter(last_name=last_name)
             print('last_name ------------  ', last_name)
 
             if last_name != '':
-                return render(request, 'main/customer_card.html',
+                return render(request, 'main/customer_card_FL.html',
                               {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
             else:
-                return render(request, 'main/customer_card.html',
+                return render(request, 'main/customer_card_FL.html',
                               {'title2': 'Карточка', 'cards': cards})  # если поле input пустое то выводим все карточки
 
 
-class CardsDeleteView(DeleteView):
-    model = Card
+#=======================================================================================================================
+def customer_card_UL(request):
+    if request.method == 'GET':
+        cards = OrganizationCustomer.objects.order_by('-id')
+        print('------ это GET  -------')
+        return render(request, 'main/customer_card_UL.html',
+                      {'title2': 'Карточка', 'cards': cards})  # выводим все карточки
+
+    # если нажали кнопку найти по фамилии то проверяем что ввели
+    if request.method == 'POST':
+        print('------ это POST -------')
+        form = UserFilter(request.POST)
+
+        if form.is_valid():
+            # print('------ это POST после проверки на валидацию -------')
+            cards = OrganizationCustomer.objects.all()
+            last_name = request.POST.get('last_name')
+            user_filter = OrganizationCustomer.objects.filter(last_name=last_name)
+            print('last_name ------------  ', last_name)
+
+            if last_name != '':
+                return render(request, 'main/customer_card_UL.html',
+                              {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
+            else:
+                return render(request, 'main/customer_card_UL.html',
+                              {'title2': 'Карточка', 'cards': cards})  # если поле input пустое то выводим все карточки
+#=======================================================================================================================
+
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+
+
+class CardsDeleteView_FL(DeleteView):
+    model = IndividualCustomer
     success_url = '/'
     context_object_name = 'article'
-    template_name = 'main/card-delete.html'
+    template_name = 'main/card-delete_FL.html'
 
 
-class CardsUpdateView(UpdateView):
-    model = Card
+class CardsUpdateView_FL(UpdateView):
+    model = IndividualCustomer
     success_url = '/'
-    template_name = 'main/input_task.html'
+    template_name = 'main/input_FL.html'
     context_object_name = 'article'
     form_class = CardForm
+#=======================================================================================================================
 
 
+class CardsDeleteView_UL(DeleteView):
+    model = OrganizationCustomer
+    success_url = '/'
+    context_object_name = 'article'
+    template_name = 'main/card-delete_UL.html'
+
+
+class CardsUpdateView_UL(UpdateView):
+    model = OrganizationCustomer
+    success_url = '/'
+    template_name = 'main/input_UL.html'
+    context_object_name = 'article'
+    form_class = InputULForm
+
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------------
 
 def input_new_task(request):
@@ -128,7 +178,8 @@ def input_FL(request):
     context = {
         'form': form,
         'error': error,
-        'page_title': 'Ввод данных заявителя, физическое лицо'
+        'page_title': 'Ввод данных заявителя, физическое лицо',
+        'temp': 'НОВАЯ'
     }
     return render(request, 'main/input_FL.html', context)
 
@@ -147,7 +198,8 @@ def input_UL(request):
     context = {
         'form': form,
         'error': error,
-        'page_title': 'Ввод данных заявителя, юридического лица'
+        'page_title': 'Ввод данных заявителя, юридического лица',
+        'temp': 'НОВАЯ'
     }
     return render(request, 'main/input_UL.html', context)
 
@@ -169,3 +221,7 @@ def settings_crm(request):
         'page_title': 'Настройка CRM'
     }
     return render(request, 'main/settings_crm.html', context)
+
+#====================================================================================================================
+#====================================================================================================================
+#====================================================================================================================

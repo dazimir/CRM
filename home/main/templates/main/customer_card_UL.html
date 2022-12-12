@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+CRM "ГК-НК"
+{% endblock %}
+
+{% block content_name %}
+Карточки заявителей (Юридические лица)
+{% endblock %}
+
+
+{% block search_card %}
+<form method="post">
+        {% csrf_token %}
+        <div>
+            <input class="form-control" name="last_name" placeholder="Название фирмы для поиска"><br>
+            <button href="{% url 'customer_card_UL' %}" type="post" class="btn btn-info">Найти по названию</button>
+            <hr>
+        </div>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
+
+
+{% block content2 %}
+<h4>{{ title2 }}</h4>
+{% for el in cards %}
+<div class="boxShadow8 line_block">
+    <hr>
+    <h4>{{ el.company_name }}</h4>
+    <br>
+    <hr>
+    <pre>выдан               : <b>{{ el.date_input_card }}</b></pre>
+    <pre>подразделение       : <b>{{ el.company_name }}</b></pre>
+    <pre>дата выдачи         : <b>{{ el.inn }}</b></pre>
+    <pre>дата рождения       : <b>{{ el.ogrn }}</b></pre>
+    <pre>место рождения      : <b>{{ el.company_address }}</b></pre>
+    <pre>адрес регистрации   : <b>{{ el.company_phone }}</b></pre>
+
+    <hr>
+    <a href="{% url 'input_UL' %}" class="btn btn-success btn-sm">Завести новую карточку</a>
+    <a href="{% url 'card-delete_UL' el.id %}" class="btn btn-danger btn-sm">Удалить карточку</a>
+    <a href="{% url 'card-update_UL' el.id %}" class="btn btn-info btn-sm">Редактировать карточку</a>
+
+</div>
+{% endfor %}
+{% endblock %}

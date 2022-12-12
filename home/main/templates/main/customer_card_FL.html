@@ -5,7 +5,7 @@ CRM "ГК-НК"
 {% endblock %}
 
 {% block content_name %}
-Карточки заявителей
+Карточки заявителей (Физические лица)
 {% endblock %}
 
 
@@ -14,7 +14,7 @@ CRM "ГК-НК"
         {% csrf_token %}
         <div>
             <input class="form-control" name="last_name" placeholder="ФИО карточки заявителя для поиска"><br>
-            <button href="{% url 'customer_card' %}" type="post" class="btn btn-info">Найти по фамилии</button>
+            <button href="{% url 'customer_card_FL' %}" type="post" class="btn btn-info">Найти по фамилии</button>
             <hr>
         </div>
         <span>{{ error }}</span>
@@ -42,9 +42,9 @@ CRM "ГК-НК"
     <hr>
     <pre>номер снилса        : <b>{{ el.snils }}</b></pre>
     <hr>
-    <a href="{% url 'input_task' %}" class="btn btn-success btn-sm">Завести новую карточку</a>
-    <a href="{% url 'card-delete' el.id %}" class="btn btn-danger btn-sm">Удалить карточку</a>
-    <a href="{% url 'card-update' el.id %}" class="btn btn-info btn-sm">Редактировать карточку</a>
+    <a href="{% url 'input_FL' %}" class="btn btn-success btn-sm">Завести новую карточку</a>
+    <a href="{% url 'card-delete_FL' el.id %}" class="btn btn-danger btn-sm">Удалить карточку</a>
+    <a href="{% url 'card-update_FL' el.id %}" class="btn btn-info btn-sm">Редактировать карточку</a>
 
 </div>
 {% endfor %}
