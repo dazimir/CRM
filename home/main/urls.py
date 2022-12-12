@@ -25,4 +25,5 @@ urlpatterns = [
     path('Input_UL', views.input_UL, name='input_UL'),
 
     path('Settings_CRM', views.settings_crm, name='settings_crm'),
+    path('login', views.login_crm, name='login_crm'),
 ]
