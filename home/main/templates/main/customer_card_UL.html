@@ -13,7 +13,7 @@ CRM "ГК-НК"
 <form method="post">
         {% csrf_token %}
         <div>
-            <input class="form-control" name="last_name" placeholder="Название фирмы для поиска"><br>
+            <input class="form-control" name="company_name" placeholder="Название фирмы для поиска"><br>
             <button href="{% url 'customer_card_UL' %}" type="post" class="btn btn-info">Найти по названию</button>
             <hr>
         </div>
@@ -28,14 +28,13 @@ CRM "ГК-НК"
 <div class="boxShadow8 line_block">
     <hr>
     <h4>{{ el.company_name }}</h4>
-    <br>
     <hr>
-    <pre>выдан               : <b>{{ el.date_input_card }}</b></pre>
-    <pre>подразделение       : <b>{{ el.company_name }}</b></pre>
-    <pre>дата выдачи         : <b>{{ el.inn }}</b></pre>
-    <pre>дата рождения       : <b>{{ el.ogrn }}</b></pre>
-    <pre>место рождения      : <b>{{ el.company_address }}</b></pre>
-    <pre>адрес регистрации   : <b>{{ el.company_phone }}</b></pre>
+    <pre>Дата                : <b>{{ el.date_input_card }}</b></pre>
+    <pre>Название компании   : <b>{{ el.company_name }}</b></pre>
+    <pre>ИНН                 : <b>{{ el.inn }}</b></pre>
+    <pre>ОГРН                : <b>{{ el.ogrn }}</b></pre>
+    <pre>Адрес компании      : <b>{{ el.company_address }}</b></pre>
+    <pre>Телефон компании    : <b>{{ el.company_phone }}</b></pre>
 
     <hr>
     <a href="{% url 'input_UL' %}" class="btn btn-success btn-sm">Завести новую карточку</a>

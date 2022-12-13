@@ -5,7 +5,7 @@ from .forms import TaskForm, CardForm, TaskobjForm, InputFLForm, InputULForm, Se
 
 from .models import Card, Taskobj
 from django.shortcuts import render
-from .filters import UserFilter
+from .filters import UserFilter, UserCorpFilter
 
 from django.views.generic import DetailView, UpdateView, DeleteView
 
@@ -96,16 +96,16 @@ def customer_card_UL(request):
     # если нажали кнопку найти по фамилии то проверяем что ввели
     if request.method == 'POST':
         print('------ это POST -------')
-        form = UserFilter(request.POST)
+        form = UserCorpFilter(request.POST)
 
         if form.is_valid():
             # print('------ это POST после проверки на валидацию -------')
             cards = OrganizationCustomer.objects.all()
-            last_name = request.POST.get('last_name')
-            user_filter = OrganizationCustomer.objects.filter(last_name=last_name)
-            print('last_name ------------  ', last_name)
+            comp_name = request.POST.get('company_name')
+            user_filter = OrganizationCustomer.objects.filter(company_name=comp_name)
+            print('last_name ------------  ', comp_name)
 
-            if last_name != '':
+            if comp_name != '':
                 return render(request, 'main/customer_card_UL.html',
                               {'title2': 'Карточка', 'cards': user_filter})  # если в поле что-то введено то ищем
             else:
@@ -167,6 +167,7 @@ def input_new_task(request):
         'error': error
     }
     return render(request, 'main/input_new_task.html', context)
+
 
 #--------------------------------------------------------------------------------------------------------------------
 def input_FL(request):
