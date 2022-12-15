@@ -43,7 +43,7 @@ class Region(models.Model):
 # Таблица "individual_customer"  -- Заказчик физическое лицо
 class IndividualCustomer(models.Model):
     date_input_card = models.DateField('Дата создания карточки', null=True)
-    last_name = models.CharField('Фамилие', max_length=50)
+    last_name = models.CharField('Фамилия', max_length=50)
     name_name = models.CharField('Имя', max_length=50)
     first_name = models.CharField('Отчество', max_length=50)
     place_of_issue = models.CharField('Место выдачи', max_length=200)
@@ -134,7 +134,7 @@ class Card(models.Model):
 # =====================================================================================================================
 
 class Taskobj(models.Model):
-    one_to_many = models.ForeignKey('Card', on_delete=models.PROTECT)
+    one_to_many = models.ForeignKey('IndividualCustomer', on_delete=models.PROTECT)
 
     date_input_card = models.DateField('Дата создания карточки', null=True)
     name_obj = models.CharField('Название объекта', max_length=150)

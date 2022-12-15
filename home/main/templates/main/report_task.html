@@ -12,4 +12,20 @@ CRM "ГК-НК"
 {% block content2 %}
     <h4 class="h4 text_shadow">Отчет по заявкам, будет фильтр, выбирать из раскрывающегося списка, в списке будет список всех заявителей</h4>
     <p>Разные поля</p>
+
+        <form method="post">
+        <div style="background-color: #FFF0F5" class="boxShadow8 line_block">
+
+                {% csrf_token %}
+                {{ cards.date_input_card }}
+                Заявитель
+                {{ cards.last_name }}<br>
+                {{ cards.name_name }}<br>
+                {{ cards.first_name }}<br>
+                ФИГНЯ
+                <p>Объект</p><hr>
+                {{ tasks.kad_number }}<br>
+                {{ tasks.address }}<br>
+        </div>
+        </form>
 {% endblock %}

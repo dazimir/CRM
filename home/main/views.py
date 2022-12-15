@@ -13,7 +13,7 @@ import datetime
 
 
 def admin(request):
-    return render(request, '/admin')
+    return render(request, '/admin/')
 
 
 def index(request):
@@ -24,29 +24,14 @@ def login_crm(request):
     return render(request, 'main/login.html')
 
 
-def input_task(request):
-    error = ''
-    temp = 'Новая карточка'
-    if request.method == 'POST':
-        form = CardForm(request.POST)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.date_input_card = datetime.date.today()
-            obj.save()
-            return redirect('/')
-        else:
-            error = 'Поля заполнены не верно'
-    form = CardForm()
-    context = {
-        'form': form,
-        'error': error,
-        'temp': temp
-    }
-    return render(request, 'main/input_task.html', context)
-
-
 def report_task(request):
-    return render(request, 'main/report_task.html')
+    if request.method == 'GET':
+        print('------ Ща чё нибудь выведу --------------------')
+        tasks = Taskobj.objects.order_by('-id')[:1]
+        cards = IndividualCustomer.objects.order_by('-id')[:1]
+        print(tasks)
+        return render(request, 'main/report_task.html', {'cards': cards, 'tasks': tasks})
+
 
 
 def input_new_task(request):
@@ -54,8 +39,7 @@ def input_new_task(request):
 
 
 def status_task(request):
-    tasks = Task.objects.order_by('-id')
-    return render(request, 'main/status_task.html', {'title': 'Отчет', 'tasks': tasks})
+    return render(request, 'main/status_task.html')
 
 #=======================================================================================================================
 def customer_card_FL(request):

@@ -6,8 +6,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('admin', views.admin, name='admin'),
-    path('Priem_zayavok', views.input_task, name='input_task'),
+    path('admin/', views.admin, name='admin'),
+    path('Priem_zayavok', views.input_new_task, name='input_new_task'),
     path('Otchet_po_zayavkam', views.report_task, name='report_task'),
     path('Status_zayavok', views.status_task, name='status_task'),
 
