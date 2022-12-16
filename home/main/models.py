@@ -134,7 +134,7 @@ class Card(models.Model):
 # =====================================================================================================================
 
 class Taskobj(models.Model):
-    one_to_many = models.ForeignKey('IndividualCustomer', on_delete=models.PROTECT)
+    # one_to_many = models.ForeignKey('IndividualCustomer', on_delete=models.PROTECT)
 
     date_input_card = models.DateField('Дата создания карточки', null=True)
     name_obj = models.CharField('Название объекта', max_length=150)

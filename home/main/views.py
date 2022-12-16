@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django import forms
 from .models import *
-from .forms import TaskForm, CardForm, TaskobjForm, InputFLForm, InputULForm, SettingsForm
+from .forms import CardForm, TaskobjForm, InputFLForm, InputULForm, SettingsForm
 
 from .models import Card, Taskobj
 from django.shortcuts import render
@@ -24,13 +24,32 @@ def login_crm(request):
     return render(request, 'main/login.html')
 
 
+
+
+
+
+
+
 def report_task(request):
     if request.method == 'GET':
         print('------ Ща чё нибудь выведу --------------------')
-        tasks = Taskobj.objects.order_by('-id')[:1]
-        cards = IndividualCustomer.objects.order_by('-id')[:1]
-        print(tasks)
-        return render(request, 'main/report_task.html', {'cards': cards, 'tasks': tasks})
+        tasks = Taskobj.objects.get(pk=3)
+        cards = IndividualCustomer.objects.get(pk=1)
+        # print('tasks: - ', tasks.values_list)
+        # print('cards: - ', cards.values_list)
+
+        context = {'tasks': tasks, 'cards': cards}
+        print('--------------------------------')
+        # print('tasks = ', tasks['kad_number', 'address'])
+        # print('cards = ', cards['last_name'])
+        return render(request, 'main/report_task.html', context)
+
+
+
+
+
+
+
 
 
 
