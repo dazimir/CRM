@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+CRM "ГК-НК"
+{% endblock %}
+
+{% block content_name %}
+        <div>
+                {{title}}
+        </div>
+{% endblock %}
+
+
+{% block content2 %}
+<form method="post">
+<div style="background-color: #33ffff" class="boxShadow8 line_block">
+        {% csrf_token %}
+        {{ form.as.p }}
+        <button type="submit">Регистрация</button>
+</div>
+</form>
+
+{% endblock %}

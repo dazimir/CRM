@@ -1,15 +1,15 @@
 from enum import unique
 from django.db import models
 
+"""DB login and password"""
 
-# =====================================================================================================================
-# Таблица "Auntifications"  -- зарегистрированные операторы CRM
-class Auntifications(models.Model):
-    username = models.CharField('Имя оператора', max_length=200, unique=True)
-    email = models.EmailField('почта оператора', max_length=200, unique=True, null=True, blank=True)
-    display_name = models.CharField('Ник оператора', max_length=200, unique=True)
-    password = models.CharField('Пароль оператора', max_length=200)
-    state = models.CharField('Статус оператора', max_length=200, unique=True)
+
+class Login(models.Model):
+    username = models.CharField('Имя пользователя', max_length=50)
+    display_name = models.CharField('Ник', max_length=50)
+    password = models.CharField('Пароль', max_length=50)
+    email = models.EmailField('Email', max_length=100)
+    state = models.CharField('Статус', max_length=10)
 
     def __str__(self):
         n = str(self.username)
@@ -23,24 +23,70 @@ class Auntifications(models.Model):
         verbose_name_plural = 'Операторы CRM'
 
 
-# =====================================================================================================================
-# Таблица "Region"  -- Район работы
-class Region(models.Model):
-    obl = models.CharField('Область/республика', max_length=200)
-    raion = models.CharField('Район', max_length=200)
-    selpo = models.CharField('Сельское поселение', max_length=200)
+""" DB Республики """
+
+
+class Republic(models.Model):
+    republic = models.CharField('Республика', max_length=50)
 
     def __str__(self):
-        n = str(self.obl + ' ' + self.raion + ' ' + self.selpo)
+        n = str(self.republic)
         return n
 
     class Meta:
-        verbose_name = 'Район работы'
-        verbose_name_plural = 'Районы работ'
+        verbose_name = 'Республика'
+        verbose_name_plural = 'Республики'
+
+
+""" DB Районы """
+
+
+class Raion(models.Model):
+    raion = models.CharField('Район', max_length=50)
+
+    def __str__(self):
+        n = str(self.raion)
+        return n
+
+    class Meta:
+        verbose_name = 'Район'
+        verbose_name_plural = 'Районы'
+
+
+""" DB Сельские поселения """
+
+
+class SelPo(models.Model):
+    selpo = models.CharField('Сельское поселение', max_length=70)
+
+    def __str__(self):
+        n = str(self.raion)
+        return n
+
+    class Meta:
+        verbose_name = 'Сельское поселение'
+        verbose_name_plural = 'Сельские поселения'
+
+
+""" DB Населенный пункт """
+
+
+class Locality(models.Model):
+    city = models.CharField('Населенный пункт', max_length=70)
+
+    def __str__(self):
+        n = str(self.raion)
+        return n
+
+    class Meta:
+        verbose_name = 'Населенный пункт'
+        verbose_name_plural = 'Населенные пункты'
 
 
 # =====================================================================================================================
-# Таблица "individual_customer"  -- Заказчик физическое лицо
+""" DB Заказчик ФЛ """
+
+
 class IndividualCustomer(models.Model):
     date_input_card = models.DateField('Дата создания карточки', null=True)
     last_name = models.CharField('Фамилия', max_length=50)
@@ -68,8 +114,9 @@ class IndividualCustomer(models.Model):
         verbose_name_plural = 'Заявители ФЛ'
 
 
-# =====================================================================================================================
-# Таблица "OrganizationCustomer"  -- Заказчик юридическое лицо
+""" DB Заказчик ЮЛ """
+
+
 class OrganizationCustomer(models.Model):
     date_input_card = models.DateField('Дата')
     company_name = models.CharField('Название фирмы', max_length=200, unique=True)
@@ -90,17 +137,7 @@ class OrganizationCustomer(models.Model):
         verbose_name_plural = 'Карточки ЮЛ'
 
 
-class Task(models.Model):
-    title = models.CharField('Название', max_length=50)
-    task = models.TextField('Описание')
-    idate = models.DateField('дата заявки')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Задача'
-        verbose_name_plural = 'Задачи'
+# =====================================================================================================================
 
 
 # Карточка заказчика ФЛ

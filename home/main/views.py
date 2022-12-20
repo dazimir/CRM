@@ -1,13 +1,16 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django import forms
+from django.urls import reverse_lazy
+
 from .models import *
-from .forms import CardForm, TaskobjForm, InputFLForm, InputULForm, SettingsForm
+from .forms import CardForm, TaskobjForm, InputFLForm, InputULForm
 
 from .models import Card, Taskobj
 from django.shortcuts import render
 from .filters import UserFilter, UserCorpFilter
 
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
 
 import datetime
 
@@ -20,14 +23,19 @@ def index(request):
     return render(request, 'main/index.html')
 
 
-def login_crm(request):
+def login(request):
     return render(request, 'main/login.html')
 
 
+class RegisterUser(CreateView):
+    form_class = UserCreationForm
+    template_name = 'main/register.html'
+    success_url = reverse_lazy('login')
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-
-
+        return dict(list(context.items()))
 
 
 def report_task(request):
@@ -45,14 +53,6 @@ def report_task(request):
         return render(request, 'main/report_task.html', context)
 
 
-
-
-
-
-
-
-
-
 def input_new_task(request):
     return render(request, 'main/input_new_task.html')
 
@@ -60,7 +60,8 @@ def input_new_task(request):
 def status_task(request):
     return render(request, 'main/status_task.html')
 
-#=======================================================================================================================
+
+# =======================================================================================================================
 def customer_card_FL(request):
     if request.method == 'GET':
         cards = IndividualCustomer.objects.order_by('-id')
@@ -88,7 +89,7 @@ def customer_card_FL(request):
                               {'title2': 'Карточка', 'cards': cards})  # если поле input пустое то выводим все карточки
 
 
-#=======================================================================================================================
+# =======================================================================================================================
 def customer_card_UL(request):
     if request.method == 'GET':
         cards = OrganizationCustomer.objects.order_by('-id')
@@ -114,11 +115,13 @@ def customer_card_UL(request):
             else:
                 return render(request, 'main/customer_card_UL.html',
                               {'title2': 'Карточка', 'cards': cards})  # если поле input пустое то выводим все карточки
-#=======================================================================================================================
 
-#--------------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------------
+
+# =======================================================================================================================
+
+# --------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 
 
 class CardsDeleteView_FL(DeleteView):
@@ -134,7 +137,9 @@ class CardsUpdateView_FL(UpdateView):
     template_name = 'main/input_FL.html'
     context_object_name = 'article'
     form_class = CardForm
-#=======================================================================================================================
+
+
+# =======================================================================================================================
 
 
 class CardsDeleteView_UL(DeleteView):
@@ -151,9 +156,10 @@ class CardsUpdateView_UL(UpdateView):
     context_object_name = 'article'
     form_class = InputULForm
 
-#--------------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------------
+
+# --------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 
 def input_new_task(request):
     error = ''
@@ -172,7 +178,7 @@ def input_new_task(request):
     return render(request, 'main/input_new_task.html', context)
 
 
-#--------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 def input_FL(request):
     error = ''
     if request.method == 'POST':
@@ -192,7 +198,7 @@ def input_FL(request):
     return render(request, 'main/input_FL.html', context)
 
 
-#--------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 def input_UL(request):
     error = ''
     if request.method == 'POST':
@@ -212,7 +218,7 @@ def input_UL(request):
     return render(request, 'main/input_UL.html', context)
 
 
-#--------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------
 def settings_crm(request):
     error = ''
     if request.method == 'POST':
@@ -230,6 +236,6 @@ def settings_crm(request):
     }
     return render(request, 'main/settings_crm.html', context)
 
-#====================================================================================================================
-#====================================================================================================================
-#====================================================================================================================
+# ====================================================================================================================
+# ====================================================================================================================
+# ====================================================================================================================

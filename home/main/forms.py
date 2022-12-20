@@ -1,24 +1,24 @@
-from .models import Task, Card, Taskobj, IndividualCustomer, OrganizationCustomer, Region
+from .models import Card, Taskobj, IndividualCustomer, OrganizationCustomer
 from django.forms import ModelForm, TextInput, Textarea, DateField, DateInput, SelectDateWidget, BooleanField, \
     CheckboxInput, RadioSelect, Select, ChoiceField
 
 
-class TaskForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = ["title", "task", "idate"]
-        widgets = {
-            "title": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'введите название'
-            }),
-            "task": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'введите описание'
-            }),
-            "idate": DateInput(format=('%d-%m-%Y'),
-                               attrs={'class': 'form-control-sm datepicker', 'placeholder': 'Select a date',
-                                      'type': 'date'})}
+# class TaskForm(ModelForm):
+#     class Meta:
+#         model = Task
+#         fields = ["title", "task", "idate"]
+#         widgets = {
+#             "title": TextInput(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'введите название'
+#             }),
+#             "task": Textarea(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'введите описание'
+#             }),
+#             "idate": DateInput(format=('%d-%m-%Y'),
+#                                attrs={'class': 'form-control-sm datepicker', 'placeholder': 'Select a date',
+#                                       'type': 'date'})}
 
 
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -288,20 +288,20 @@ class InputULForm(ModelForm):
         }
 
 
-class SettingsForm(ModelForm):
-    class Meta:
-        model = Region
-        fields = ['obl', 'raion', 'selpo']
-        widgets = {
-            "obl": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Область/республика'}),
-
-            "raion": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Район'}),
-
-            "selpo": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Сельское поселение'}),
-        }
+# class SettingsForm(ModelForm):
+#     class Meta:
+#         model = Region
+#         fields = ['obl', 'raion', 'selpo']
+#         widgets = {
+#             "obl": TextInput(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'Область/республика'}),
+#
+#             "raion": TextInput(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'Район'}),
+#
+#             "selpo": TextInput(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'Сельское поселение'}),
+#         }

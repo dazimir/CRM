@@ -7,6 +7,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', views.admin, name='admin'),
+
+    path('Register/', views.RegisterUser.as_view(), name='register'),
+    path('Login', views.login, name='login'),
+
     path('Priem_zayavok', views.input_new_task, name='input_new_task'),
     path('Otchet_po_zayavkam', views.report_task, name='report_task'),
     path('Status_zayavok', views.status_task, name='status_task'),
@@ -25,6 +29,6 @@ urlpatterns = [
     path('Input_UL', views.input_UL, name='input_UL'),
 
     path('Settings_CRM', views.settings_crm, name='settings_crm'),
-    path('login', views.login_crm, name='login_crm'),
+    # path('login', views.login_crm, name='login_crm'),
 
 ]
